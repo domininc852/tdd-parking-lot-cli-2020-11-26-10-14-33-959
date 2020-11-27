@@ -24,4 +24,27 @@ public class SmartParkingBoyTest {
         assertEquals(3, parkingLot1.getAvailableSpace());
         assertEquals(3, parkingLot2.getAvailableSpace());
     }
+    @Test
+    public void should_park_evenly_to_the_parking_lots_when_park_multiple_cars_given_all_parking_lots_has_same_number_of_available_slots() throws NotEnoughPositionException {
+        //given
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+        ParkingLot parkingLot1 = new ParkingLot(3);
+        ParkingLot parkingLot2 = new ParkingLot(3);
+        ParkingLot parkingLot3 = new ParkingLot(3);
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        parkingLots.add(parkingLot3);
+        SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
+        //when
+        parkingBoy.parkCar(car1);
+        parkingBoy.parkCar(car2);
+        parkingBoy.parkCar(car3);
+        //then
+        assertEquals(2,parkingLot1.getAvailableSpace());
+        assertEquals(2,parkingLot2.getAvailableSpace());
+        assertEquals(2,parkingLot3.getAvailableSpace());
+    }
 }
