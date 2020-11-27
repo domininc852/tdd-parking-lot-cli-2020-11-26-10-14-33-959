@@ -32,6 +32,9 @@ public class ParkingLot {
     public boolean isCarExist(Ticket ticket) {
         return ticketCarMap.get(ticket)!=null;
     }
+    public double getAvailablePositionRate(){
+        return (getAvailableSpace())*1.0/capacity;
+    }
 
 
 }
