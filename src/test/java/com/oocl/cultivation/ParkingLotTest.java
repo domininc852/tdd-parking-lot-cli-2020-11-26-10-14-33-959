@@ -79,7 +79,7 @@ public class ParkingLotTest {
     //then
     //return car
     @Test
-    public void should_return_car_when_fetch_car_given_ticket_and_ticket_not_used() {
+    public void should_return_car_when_fetch_car_given_not_used_ticket() {
         //given
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot(1);
@@ -88,6 +88,23 @@ public class ParkingLotTest {
         Car actual = parkingLot.fetchCar(ticket);
         //then
         assertEquals(car, actual);
+    }
+    //given ticket and ticket has been used
+    //when fetching car
+    //then
+    //return null
+    @Test
+    public void should_return_null_when_fetch_car_given_used_ticket() {
+        //given
+        Car car = new Car();
+        ParkingLot parkingLot = new ParkingLot(1);
+        Ticket ticket = parkingLot.park(car);
+        //when
+        Car actual1 = parkingLot.fetchCar(ticket);
+        Car actual2 = parkingLot.fetchCar(ticket);
+        //then
+        assertNotNull(actual1);
+        assertNull(actual2);
     }
 
 }
