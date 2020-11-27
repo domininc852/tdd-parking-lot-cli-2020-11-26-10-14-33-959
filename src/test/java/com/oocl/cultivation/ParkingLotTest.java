@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ParkingSlotTest {
+public class ParkingLotTest {
     //given car and parking lot has space
     //when parking car
     //then
@@ -13,9 +13,9 @@ public class ParkingSlotTest {
     public void should_return_ticket_when_park_car_given_car_parking_slot_with_available_slot() {
         //given
         Car car = new Car();
-        ParkingSlot parkingSlot = new ParkingSlot(1);
+        ParkingLot parkingLot = new ParkingLot(1);
         //when
-        Ticket ticket = parkingSlot.park(car);
+        Ticket ticket = parkingLot.park(car);
         //then
         assertNotNull(ticket);
     }
@@ -27,9 +27,9 @@ public class ParkingSlotTest {
     public void should_return_null_when_park_car_given_car_parking_slot_with_no_available_slot() {
         //given
         Car car = new Car();
-        ParkingSlot parkingSlot = new ParkingSlot(0);
+        ParkingLot parkingLot = new ParkingLot(0);
         //when
-        Ticket ticket = parkingSlot.park(car);
+        Ticket ticket = parkingLot.park(car);
         //then
         assertNull(ticket);
     }
@@ -43,14 +43,33 @@ public class ParkingSlotTest {
         //given
         Car car1 = new Car();
         Car car2 = new Car();
-        ParkingSlot parkingSlot = new ParkingSlot(1);
+        ParkingLot parkingLot = new ParkingLot(1);
         //when
-        Ticket ticket1 = parkingSlot.park(car1);
-        Ticket ticket2 = parkingSlot.park(car2);
+        Ticket ticket1 = parkingLot.park(car1);
+        Ticket ticket2 = parkingLot.park(car2);
 
         //then
         assertNotNull(ticket1);
         assertNull(ticket2);
+    }
+    //given multiple cars and parking lot only have available slot
+    //when parking car
+    //then
+    //return all car parked
+    @Test
+    public void should_return_all_cars_parked_when_park_multiple_cars_given_multiple_cars_parking_slot_with_available_slot() {
+        //given
+        Car car1 = new Car();
+        Car car2 = new Car();
+        ParkingLot parkingLot = new ParkingLot(2);
+        //when
+        Ticket ticket1 = parkingLot.park(car1);
+        Ticket ticket2 = parkingLot.park(car2);
+
+        //then
+        assertNotNull(ticket1);
+        assertNotNull(ticket2);
+        assertNotEquals(ticket1,ticket2);
     }
 
 }

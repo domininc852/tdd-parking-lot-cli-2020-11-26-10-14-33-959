@@ -10,12 +10,12 @@ class ParkingBoyTest {
     void should_be_parked_once_when_park_a_car_given_car_parking_boy_parking_slot_with_available_slot() {
         //given
         Car car = new Car();
-        ParkingSlot parkingSlot = Mockito.mock(ParkingSlot.class);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingSlot);
+        ParkingLot parkingLot = Mockito.mock(ParkingLot.class);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         //when
         parkingBoy.park(car);
         //then
-        Mockito.verify(parkingSlot, times(1)).park(car);
+        Mockito.verify(parkingLot, times(1)).park(car);
 
     }
 }

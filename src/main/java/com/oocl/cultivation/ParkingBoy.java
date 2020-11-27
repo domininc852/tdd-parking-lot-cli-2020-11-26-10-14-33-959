@@ -1,13 +1,13 @@
 package com.oocl.cultivation;
 
 public class ParkingBoy {
-    private ParkingSlot parkingSlot;
+    private ParkingLot parkingLot;
 
-    public ParkingBoy(ParkingSlot parkingSlot) {
-        this.parkingSlot = parkingSlot;
+    public ParkingBoy(ParkingLot parkingLot) {
+        this.parkingLot = parkingLot;
     }
 
     public void park(Car car) {
-        parkingSlot.park(car);
+        parkingLot.park(car);
     }
 }

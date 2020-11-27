@@ -4,10 +4,10 @@ package com.oocl.cultivation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParkingSlot {
+public class ParkingLot {
     private final int capacity;
     private List<Car> cars;
-    public ParkingSlot(int capacity) {
+    public ParkingLot(int capacity) {
         this.capacity = capacity;
         cars=new ArrayList<>();
     }
