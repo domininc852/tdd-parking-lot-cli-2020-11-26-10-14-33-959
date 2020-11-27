@@ -19,7 +19,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_be_fetched_when_fetch_a_car_given_ticket_parking_boy_parking_slot() {
+    void should_be_fetched_when_fetch_a_car_given_ticket_parking_boy_parking_slot() throws UnrecognizedParkingTicket {
         //given
         Car car = new Car();
         Ticket ticket = new Ticket();

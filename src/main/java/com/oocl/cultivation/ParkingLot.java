@@ -23,8 +23,11 @@ public class ParkingLot {
         return ticket;
     }
 
-    public Car fetchCar(Ticket ticket) {
+    public Car fetchCar(Ticket ticket) throws UnrecognizedParkingTicket {
         Car car = ticketCarMap.get(ticket);
+        if (car == null) {
+            throw new UnrecognizedParkingTicket();
+        }
         ticketCarMap.remove(ticket);
         return car;
     }
