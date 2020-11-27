@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ManagerTest {
     @Test
-    public void should_able_to_order_parking_boy_park_when_order_park_given_the_parking_boy_in_the_list() {
+    public void should_able_to_order_parking_boy_park_when_order_park_given_the_parking_boy_in_the_list() throws NotEnoughPositionException {
         //given
         Car car = new Car();
         ParkingLot parkingLot1 = new ParkingLot(1);

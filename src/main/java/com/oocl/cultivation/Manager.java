@@ -12,10 +12,14 @@ public class Manager extends ParkingBoy {
     }
 
     public boolean addParkingBoyToList(ParkingBoy parkingBoy) {
+        managementList.add(parkingBoy);
         return false;
     }
 
-    public Ticket orderPark(ParkingBoy parkingBoy, Car car) {
+    public Ticket orderPark(ParkingBoy parkingBoy, Car car) throws NotEnoughPositionException {
+        if (managementList.contains(parkingBoy)) {
+            return parkingBoy.parkCar(car);
+        }
         return null;
     }
 }
