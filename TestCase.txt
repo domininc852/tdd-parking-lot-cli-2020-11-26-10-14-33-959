@@ -1,0 +1,45 @@
+given car and parking lot has space
+when parking car
+then
+return ticket
+
+given car and parking lot does not have space
+when parking car
+then
+return null
+
+given nothing 
+when parking car
+return null
+
+given ticket and ticket has not been used
+when fetching car
+then
+return car
+
+given ticket and ticket has been used
+when fetching car
+then
+return null
+
+given ticket and car does not exist 
+when fetching car
+then
+return null
+
+
+given nothing
+when fetching car
+return null
+
+
+
+
+
+
+
+
+
+
+
+
