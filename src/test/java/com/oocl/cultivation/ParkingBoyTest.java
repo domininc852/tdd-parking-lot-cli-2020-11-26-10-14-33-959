@@ -13,9 +13,9 @@ class ParkingBoyTest {
         ParkingSlot parkingSlot = Mockito.mock(ParkingSlot.class);
         ParkingBoy parkingBoy = new ParkingBoy(parkingSlot);
         //when
-        parkingBoy.park();
+        parkingBoy.park(car);
         //then
-        Mockito.verify(parkingSlot,times(1)).park();
+        Mockito.verify(parkingSlot, times(1)).park(car);
 
     }
 }

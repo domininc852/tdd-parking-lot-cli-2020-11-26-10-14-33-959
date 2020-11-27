@@ -7,7 +7,7 @@ public class ParkingBoy {
         this.parkingSlot = parkingSlot;
     }
 
-    public void park() {
-        parkingSlot.park();
+    public void park(Car car) {
+        parkingSlot.park(car);
     }
 }
