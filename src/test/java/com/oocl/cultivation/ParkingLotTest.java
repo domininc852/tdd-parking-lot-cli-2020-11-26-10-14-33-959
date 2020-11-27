@@ -108,5 +108,21 @@ public class ParkingLotTest {
         assertEquals(car, actual1);
         assertNull(actual2);
     }
+    //given ticket and car does not exist
+    //when fetching car
+    //then
+    //return null
+    @Test
+    public void should_return_null_when_fetch_car_given_car_not_existed() {
+        //given
+        Car car = new Car();
+        ParkingLot parkingLot = new ParkingLot(1);
+        parkingLot.park(car);
+        Ticket ticket2 = new Ticket();
+        //when
+        Car actual1 = parkingLot.fetchCar(ticket2);
+        //then
+        assertNull(actual1);
+    }
 
 }
