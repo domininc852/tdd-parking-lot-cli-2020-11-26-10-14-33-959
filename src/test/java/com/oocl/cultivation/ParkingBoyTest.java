@@ -16,6 +16,18 @@ class ParkingBoyTest {
         parkingBoy.park(car);
         //then
         Mockito.verify(parkingLot, times(1)).park(car);
+    }
+    @Test
+    void should_be_fetched_when_fetch_a_car_given_ticket_parking_boy_parking_slot_parked_car() {
+        //given
+        Car car = new Car();
+        Ticket ticket=new Ticket();
+        ParkingLot parkingLot = Mockito.mock(ParkingLot.class);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        //when
+        parkingBoy.fetch(ticket);
 
+        //then
+        Mockito.verify(parkingLot, times(1)).fetchCar(ticket);
     }
 }
