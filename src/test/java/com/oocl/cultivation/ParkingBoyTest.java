@@ -55,5 +55,26 @@ class ParkingBoyTest {
         assertEquals(0,parkingLot1.getAvailableSpace());
         assertEquals(1,parkingLot2.getAvailableSpace());
     }
+    @Test
+    void should_park_to_first_parking_lot_when_park_a_car_given_two_parking_lots_with_first_parking_lot_have_available_slot() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
+        //given
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+        ParkingLot parkingLot1 = new ParkingLot(2);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        List<ParkingLot> parkingLots=new ArrayList<>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        //when
+        Ticket ticket1=parkingBoy.park(car1);
+        parkingBoy.park(car2);
+        parkingBoy.fetch(ticket1);
+        parkingBoy.park(car3);
+        //then
+        assertEquals(0,parkingLot1.getAvailableSpace());
+        assertEquals(1,parkingLot2.getAvailableSpace());
+    }
 
 }
