@@ -3,6 +3,11 @@ package com.oocl.cultivation;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 
 class ParkingBoyTest {
@@ -11,7 +16,7 @@ class ParkingBoyTest {
         //given
         Car car = new Car();
         ParkingLot parkingLot = Mockito.mock(ParkingLot.class);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(Arrays.asList(parkingLot));
         //when
         parkingBoy.park(car);
         //then
@@ -24,11 +29,31 @@ class ParkingBoyTest {
         Car car = new Car();
         Ticket ticket = new Ticket();
         ParkingLot parkingLot = Mockito.mock(ParkingLot.class);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(Arrays.asList(parkingLot));
         //when
         parkingBoy.fetch(ticket);
 
         //then
         Mockito.verify(parkingLot, times(1)).fetchCar(ticket);
     }
+    @Test
+    void should_park_to_first_parking_lot_when_park_two_car_given_two_parking_lots_with_first_parking_lot_have_available_slot() throws NotEnoughPositionException {
+        //given
+        Car car1 = new Car();
+        Car car2 = new Car();
+        ParkingLot parkingLot1 = new ParkingLot(2);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        List<ParkingLot> parkingLots=new ArrayList<>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        //when
+        parkingBoy.park(car1);
+        parkingBoy.park(car2);
+
+        //then
+        assertEquals(0,parkingLot1.getAvailableSpace());
+        assertEquals(1,parkingLot2.getAvailableSpace());
+    }
+
 }

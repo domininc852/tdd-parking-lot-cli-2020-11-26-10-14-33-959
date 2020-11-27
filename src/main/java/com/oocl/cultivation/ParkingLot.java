@@ -30,4 +30,10 @@ public class ParkingLot {
         ticketCarMap.remove(ticket);
         return car;
     }
+
+    public int getAvailableSpace() {
+        return capacity - ticketCarMap.size();
+    }
+
+
 }
