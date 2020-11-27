@@ -30,9 +30,10 @@ public class ParkingLotTest {
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot(0);
         //when
-        Ticket ticket = parkingLot.park(car);
-        //then
-        assertNull(ticket);
+        final NotEnoughPosition notEnoughPosition = assertThrows(NotEnoughPosition.class, () -> {
+            parkingLot.park(car);
+        });
+        assertEquals("Not enough Position", notEnoughPosition.getMessage());
     }
 
     //given multiple cars and parking lot only have 1 available slot
@@ -45,13 +46,14 @@ public class ParkingLotTest {
         Car car1 = new Car();
         Car car2 = new Car();
         ParkingLot parkingLot = new ParkingLot(1);
-        //when
         Ticket ticket1 = parkingLot.park(car1);
-        Ticket ticket2 = parkingLot.park(car2);
-
+        //when
+        final NotEnoughPosition notEnoughPosition = assertThrows(NotEnoughPosition.class, () -> {
+            parkingLot.park(car2);
+        });
+        assertEquals("Not enough Position", notEnoughPosition.getMessage());
         //then
         assertNotNull(ticket1);
-        assertNull(ticket2);
     }
 
     //given multiple cars and parking lot only have available slot
@@ -108,6 +110,7 @@ public class ParkingLotTest {
         assertEquals(car, actual1);
         assertNull(actual2);
     }
+
     //given ticket and car does not exist
     //when fetching car
     //then
