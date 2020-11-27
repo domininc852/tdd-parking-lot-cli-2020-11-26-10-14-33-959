@@ -7,7 +7,7 @@ import static org.mockito.Mockito.times;
 
 class ParkingBoyTest {
     @Test
-    void should_be_parked_once_when_park_a_car_given_car_parking_boy_parking_slot() {
+    void should_be_parked_once_when_park_a_car_given_car_parking_boy_parking_slot() throws NotEnoughPosition {
         //given
         Car car = new Car();
         ParkingLot parkingLot = Mockito.mock(ParkingLot.class);
@@ -17,11 +17,12 @@ class ParkingBoyTest {
         //then
         Mockito.verify(parkingLot, times(1)).park(car);
     }
+
     @Test
     void should_be_fetched_when_fetch_a_car_given_ticket_parking_boy_parking_slot() {
         //given
         Car car = new Car();
-        Ticket ticket=new Ticket();
+        Ticket ticket = new Ticket();
         ParkingLot parkingLot = Mockito.mock(ParkingLot.class);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
         //when
