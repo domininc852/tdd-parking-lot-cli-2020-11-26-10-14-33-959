@@ -13,26 +13,24 @@ public class ParkingLot {
         ticketCarMap = new HashMap<>();
     }
 
-    public Ticket park(Car car) throws NotEnoughPositionException {
-        if (capacity - ticketCarMap.size() <= 0) {
-            throw new NotEnoughPositionException();
-        }
+    public Ticket park(Car car) {
         Ticket ticket = new Ticket();
         ticketCarMap.put(ticket, car);
         return ticket;
     }
 
-    public Car fetchCar(Ticket ticket) throws UnrecognizedParkingTicketException {
+    public Car fetchCar(Ticket ticket) {
         Car car = ticketCarMap.get(ticket);
-        if (car == null) {
-            throw new UnrecognizedParkingTicketException();
-        }
         ticketCarMap.remove(ticket);
         return car;
     }
 
     public int getAvailableSpace() {
         return capacity - ticketCarMap.size();
+    }
+
+    public boolean isCarExist(Ticket ticket) {
+        return ticketCarMap.get(ticket)!=null;
     }
 
 
