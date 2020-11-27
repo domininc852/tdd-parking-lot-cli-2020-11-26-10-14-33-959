@@ -7,7 +7,7 @@ import static org.mockito.Mockito.times;
 
 class ParkingBoyTest {
     @Test
-    void should_be_parked_once_when_park_a_car_given_car_parking_boy_parking_slot() throws NotEnoughPosition {
+    void should_be_parked_once_when_park_a_car_given_car_parking_boy_parking_slot() throws NotEnoughPositionException {
         //given
         Car car = new Car();
         ParkingLot parkingLot = Mockito.mock(ParkingLot.class);
@@ -19,7 +19,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    void should_be_fetched_when_fetch_a_car_given_ticket_parking_boy_parking_slot() throws UnrecognizedParkingTicket {
+    void should_be_fetched_when_fetch_a_car_given_ticket_parking_boy_parking_slot() throws UnrecognizedParkingTicketException {
         //given
         Car car = new Car();
         Ticket ticket = new Ticket();
