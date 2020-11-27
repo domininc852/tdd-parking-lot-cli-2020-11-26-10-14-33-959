@@ -11,20 +11,19 @@ public class ParkingBoy {
     }
 
     public Ticket parkCar(Car car) throws NotEnoughPositionException {
-        Optional<ParkingLot> parkingLotOptional = parkingLots.stream().filter(parkingLot -> parkingLot.getAvailableSpace() > 0).findFirst();
-        if (parkingLotOptional.isPresent()) {
-            return parkingLotOptional.get().park(car);
-        }
-        throw new NotEnoughPositionException();
-
-
+        Optional<ParkingLot> parkingLotOptional = Optional.ofNullable(parkingLots.stream().
+                filter(parkingLot -> parkingLot.getAvailableSpace() > 0).
+                findFirst().
+                orElseThrow(NotEnoughPositionException::new));
+        return parkingLotOptional.get().park(car);
     }
 
     public Car fetchCar(Ticket ticket) throws UnrecognizedParkingTicketException {
-        Optional<ParkingLot> parkingLotOptional = parkingLots.stream().filter(parkingLot -> parkingLot.isCarExist(ticket)).findFirst();
-        if (parkingLotOptional.isPresent()) {
-            return parkingLotOptional.get().fetchCar(ticket);
-        }
-        throw new UnrecognizedParkingTicketException();
+        Optional<ParkingLot> parkingLotOptional = Optional.ofNullable(parkingLots.stream().
+                filter(parkingLot -> parkingLot.isCarExist(ticket)).
+                findFirst().
+                orElseThrow(UnrecognizedParkingTicketException::new));
+        return parkingLotOptional.get().fetchCar(ticket);
+
     }
 }
