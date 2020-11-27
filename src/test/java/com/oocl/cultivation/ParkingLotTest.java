@@ -19,6 +19,7 @@ public class ParkingLotTest {
         //then
         assertNotNull(ticket);
     }
+
     //given car and parking lot does not have space
     //when parking car
     //then
@@ -52,6 +53,7 @@ public class ParkingLotTest {
         assertNotNull(ticket1);
         assertNull(ticket2);
     }
+
     //given multiple cars and parking lot only have available slot
     //when parking car
     //then
@@ -69,8 +71,9 @@ public class ParkingLotTest {
         //then
         assertNotNull(ticket1);
         assertNotNull(ticket2);
-        assertNotEquals(ticket1,ticket2);
+        assertNotEquals(ticket1, ticket2);
     }
+
     //given ticket and ticket has not been used
     //when fetching car
     //then
@@ -80,11 +83,11 @@ public class ParkingLotTest {
         //given
         Car car = new Car();
         ParkingLot parkingLot = new ParkingLot(1);
-        Ticket ticket=parkingLot.park(car);
+        Ticket ticket = parkingLot.park(car);
         //when
-        Car actual=parkingLot.fetchCar(ticket);
+        Car actual = parkingLot.fetchCar(ticket);
         //then
-        assertEquals(car,actual);
+        assertEquals(car, actual);
     }
 
 }
