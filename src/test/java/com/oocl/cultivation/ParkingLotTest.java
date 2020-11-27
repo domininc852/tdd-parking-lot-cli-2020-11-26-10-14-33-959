@@ -89,6 +89,7 @@ public class ParkingLotTest {
         //then
         assertEquals(car, actual);
     }
+
     //given ticket and ticket has been used
     //when fetching car
     //then
@@ -104,6 +105,7 @@ public class ParkingLotTest {
         Car actual2 = parkingLot.fetchCar(ticket);
         //then
         assertNotNull(actual1);
+        assertEquals(car, actual1);
         assertNull(actual2);
     }
 

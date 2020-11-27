@@ -24,6 +24,11 @@ public class ParkingLot {
     }
 
     public Car fetchCar(Ticket ticket) {
-        return ticketCarMap.get(ticket);
+        Car car = ticketCarMap.get(ticket);
+        if (car != null) {
+            ticketCarMap.remove(ticket);
+            return car;
+        }
+        return null;
     }
 }
