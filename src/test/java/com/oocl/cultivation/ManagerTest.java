@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ManagerTest {
     @Test
@@ -36,6 +35,23 @@ public class ManagerTest {
         assertTrue(isAddParkingBoySuccessful);
         assertTrue(isAddSmartParkingBoySuccessful);
         assertTrue(isAddSmartParkingBoySuccessful);
+    }
+    @Test
+    public void should_return_false_when_add_other_manager_given_two_manager() {
+        //given
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        List<ParkingLot> parkingLots1 = new ArrayList<>();
+        List<ParkingLot> parkingLots2 = new ArrayList<>();
+        parkingLots1.add(parkingLot1);
+        parkingLots2.add(parkingLot2);
+        Manager manager1 = new Manager(parkingLots1);
+        Manager manager2 = new Manager(parkingLots2);
+        //when
+        boolean isManagerSuccessful = manager1.addParkingBoyToList(manager2);
+        //then
+        assertFalse(isManagerSuccessful);
+
     }
 
     @Test
