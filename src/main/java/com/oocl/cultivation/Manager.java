@@ -13,7 +13,7 @@ public class Manager extends ParkingBoy {
 
     public boolean addParkingBoyToList(ParkingBoy parkingBoy) {
         managementList.add(parkingBoy);
-        return false;
+        return true;
     }
 
     public Ticket orderPark(ParkingBoy parkingBoy, Car car) throws NotEnoughPositionException {
