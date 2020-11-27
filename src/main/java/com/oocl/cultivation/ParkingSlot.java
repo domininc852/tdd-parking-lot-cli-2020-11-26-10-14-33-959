@@ -16,6 +16,7 @@ public class ParkingSlot {
         if(capacity-cars.size()<=0){
             return null;
         }
+        cars.add(car);
         return new Ticket();
     }
 }
