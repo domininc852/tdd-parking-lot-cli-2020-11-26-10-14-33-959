@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class SuperSuperSmartParkingBoyTest {
+public class SuperSmartParkingBoyTest {
     @Test
     public void should_park_to_second_parking_lot_when_park_a_car_given_second_parking_lot_has_larger_available_position_rate_but_fewer_available_slot_than_first_parking_lot() throws NotEnoughPositionException {
         //given
