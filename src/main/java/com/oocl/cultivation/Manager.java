@@ -12,6 +12,9 @@ public class Manager extends ParkingBoy {
     }
 
     public boolean addParkingBoyToList(ParkingBoy parkingBoy) {
+        if (parkingBoy.getClass().equals(Manager.class)) {
+            return false;
+        }
         managementList.add(parkingBoy);
         return true;
     }
