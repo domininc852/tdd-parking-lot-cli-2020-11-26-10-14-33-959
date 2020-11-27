@@ -7,7 +7,7 @@ import static org.mockito.Mockito.times;
 
 class ParkingBoyTest {
     @Test
-    void should_be_parked_once_when_park_a_car_given_car_parking_boy_parking_slot_with_available_slot() {
+    void should_be_parked_once_when_park_a_car_given_car_parking_boy_parking_slot() {
         //given
         Car car = new Car();
         ParkingLot parkingLot = Mockito.mock(ParkingLot.class);
@@ -18,7 +18,7 @@ class ParkingBoyTest {
         Mockito.verify(parkingLot, times(1)).park(car);
     }
     @Test
-    void should_be_fetched_when_fetch_a_car_given_ticket_parking_boy_parking_slot_parked_car() {
+    void should_be_fetched_when_fetch_a_car_given_ticket_parking_boy_parking_slot() {
         //given
         Car car = new Car();
         Ticket ticket=new Ticket();
