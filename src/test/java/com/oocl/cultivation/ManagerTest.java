@@ -150,5 +150,43 @@ public class ManagerTest {
         assertNotNull(ticket1);
         assertNotNull(ticket2);
     }
+    @Test
+    public void should_able_to_order_all_kinds_of_parking_boys_fetch_car_when_order_fetch_given_the_parking_boys_in_the_list() throws NotEnoughPositionException {
+        //given
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        ParkingLot parkingLot3 = new ParkingLot(1);
+        ParkingLot parkingLot4 = new ParkingLot(1);
+        List<ParkingLot> parkingLots1 = new ArrayList<>();
+        List<ParkingLot> parkingLots2 = new ArrayList<>();
+        List<ParkingLot> parkingLots3 = new ArrayList<>();
+        List<ParkingLot> parkingLots4 = new ArrayList<>();
+        parkingLots1.add(parkingLot1);
+        parkingLots2.add(parkingLot2);
+        parkingLots3.add(parkingLot3);
+        parkingLots4.add(parkingLot4);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots1);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots2);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots3);
+        Manager manager = new Manager(parkingLots4);
+        manager.addParkingBoyToList(parkingBoy);
+        manager.addParkingBoyToList(smartParkingBoy);
+        manager.addParkingBoyToList(superSmartParkingBoy);
+        Ticket ticket1 = parkingBoy.parkCar( car1);
+        Ticket ticket2 = smartParkingBoy.parkCar(car2);
+        Ticket ticket3 = superSmartParkingBoy.parkCar(car3);
+        //when
+        Car actualcar1= manager.orderFetch(parkingBoy,ticket1);
+        Car actualcar2= manager.orderFetch(smartParkingBoy,ticket2);
+        Car actualcar3= manager.orderFetch(superSmartParkingBoy,ticket3);
 
+        //then
+        assertEquals(car1,actualcar1);
+        assertEquals(car2,actualcar2);
+        assertEquals(car3,actualcar3);
+
+    }
 }

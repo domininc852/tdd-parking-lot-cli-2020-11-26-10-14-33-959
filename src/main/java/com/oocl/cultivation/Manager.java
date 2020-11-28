@@ -25,4 +25,8 @@ public class Manager extends ParkingBoy {
         }
         return null;
     }
+
+    public Car orderFetch(ParkingBoy parkingBoy, Ticket ticket) {
+        return null;
+    }
 }
