@@ -27,7 +27,7 @@ class ParkingBoyTest {
             parkingBoy.parkCar(car1);
         });
         //then
-        assertEquals("Not enough Position", notEnoughPositionException.getMessage());
+        assertEquals("Not enough position", notEnoughPositionException.getMessage());
     }
 
     //given multiple cars and parking lot only have 1 available slot
@@ -50,7 +50,7 @@ class ParkingBoyTest {
         final NotEnoughPositionException notEnoughPositionException = assertThrows(NotEnoughPositionException.class, () -> {
             parkingBoy.parkCar(car2);
         });
-        assertEquals("Not enough Position", notEnoughPositionException.getMessage());
+        assertEquals("Not enough position", notEnoughPositionException.getMessage());
         //then
         assertNotNull(ticket1);
     }

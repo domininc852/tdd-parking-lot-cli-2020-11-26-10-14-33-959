@@ -80,6 +80,6 @@ public class SuperSmartParkingBoyTest {
         final NotEnoughPositionException notEnoughPositionException = assertThrows(NotEnoughPositionException.class, () -> {
             parkingBoy.parkCar(car3);
         });
-        assertEquals("Not enough Position", notEnoughPositionException.getMessage());
+        assertEquals("Not enough position", notEnoughPositionException.getMessage());
     }
 }

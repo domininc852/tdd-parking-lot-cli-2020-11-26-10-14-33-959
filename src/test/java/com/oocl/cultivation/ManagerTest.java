@@ -88,6 +88,7 @@ public class ManagerTest {
         assertNotNull(ticket2);
         assertNotNull(ticket3);
     }
+
     @Test
     public void should_not_able_to_order_any_kinds_of_parking_boys_park_when_order_park_given_the_parking_boys_not_in_the_list() throws NotEnoughPositionException {
         //given
@@ -118,6 +119,36 @@ public class ManagerTest {
         assertNull(ticket1);
         assertNull(ticket2);
         assertNull(ticket3);
+    }
+
+    @Test
+    public void should_return_not_enough_position_error_message_when_order_park_given_the_parking_lots_managed_by_the_parking_boy_does_not_have_enough_space() throws NotEnoughPositionException {
+        //given
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        ParkingLot parkingLot3 = new ParkingLot(1);
+        List<ParkingLot> parkingLots1 = new ArrayList<>();
+        List<ParkingLot> parkingLots2 = new ArrayList<>();
+        parkingLots1.add(parkingLot1);
+        parkingLots1.add(parkingLot2);
+        parkingLots2.add(parkingLot3);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots1);
+        Manager manager = new Manager(parkingLots2);
+        manager.addParkingBoyToList(smartParkingBoy);
+        //when
+        Ticket ticket1 = manager.orderPark(smartParkingBoy, car1);
+        Ticket ticket2 = manager.orderPark(smartParkingBoy, car2);
+
+        final NotEnoughPositionException notEnoughPositionException = assertThrows(NotEnoughPositionException.class, () -> {
+            manager.orderPark(smartParkingBoy, car3);
+        });
+        //then
+        assertEquals("Not enough position", notEnoughPositionException.getMessage());
+        assertNotNull(ticket1);
+        assertNotNull(ticket2);
     }
 
 }
