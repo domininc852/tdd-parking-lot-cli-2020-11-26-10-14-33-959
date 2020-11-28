@@ -13,11 +13,6 @@ public class ParkingBoy {
     }
 
     public Ticket parkCar(Car car) throws NotEnoughPositionException {
-//        Optional<ParkingLot> parkingLotOptional = Optional.ofNullable(parkingLots.stream().
-//                filter(parkingLot -> parkingLot.getAvailableSpace() > 0).
-//                findFirst().
-//                orElseThrow(NotEnoughPositionException::new));
-//        return parkingLotOptional.get().park(car);
         return parkBehavior.park(car, this.parkingLots);
     }
 

@@ -1,6 +1,7 @@
 package com.oocl.cultivation;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -252,4 +253,21 @@ public class ManagerTest {
         assertEquals("Unrecognized parking ticket", unrecognizedParkingTicketException.getMessage());
 
     }
+    @Test
+    public void should_be_parked_once_when_park_a_car_given_a_manager() throws NotEnoughPositionException {
+        //given
+        Car car = new Car();
+        StandardPark standardPark= Mockito.mock(StandardPark.class);
+        ParkingLot parkingLot1=new ParkingLot(1);
+        ParkingLot parkingLot2=new ParkingLot(1);
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        Manager manager=new Manager(parkingLots,standardPark);
+        //when
+        manager.parkCar(car);
+        //then
+        Mockito.verify(standardPark, Mockito.times(1)).park(car,parkingLots);
+    }
+
 }
