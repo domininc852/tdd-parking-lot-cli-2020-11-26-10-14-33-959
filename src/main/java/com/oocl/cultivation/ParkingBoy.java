@@ -24,4 +24,8 @@ public class ParkingBoy {
         return parkingLotOptional.get().fetchCar(ticket);
 
     }
+
+    public void setParkBehavior(IParkBehavior parkBehavior) {
+        this.parkBehavior = parkBehavior;
+    }
 }
