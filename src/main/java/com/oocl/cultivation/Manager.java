@@ -27,6 +27,9 @@ public class Manager extends ParkingBoy {
     }
 
     public Car orderFetch(ParkingBoy parkingBoy, Ticket ticket) throws UnrecognizedParkingTicketException {
-        return parkingBoy.fetchCar(ticket);
+        if (managementList.contains(parkingBoy)) {
+            return parkingBoy.fetchCar(ticket);
+        }
+        return null;
     }
 }
