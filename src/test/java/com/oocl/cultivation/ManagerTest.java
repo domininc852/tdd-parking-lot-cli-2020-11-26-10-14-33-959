@@ -179,14 +179,49 @@ public class ManagerTest {
         Ticket ticket2 = smartParkingBoy.parkCar(car2);
         Ticket ticket3 = superSmartParkingBoy.parkCar(car3);
         //when
-        Car actualcar1= manager.orderFetch(parkingBoy,ticket1);
-        Car actualcar2= manager.orderFetch(smartParkingBoy,ticket2);
-        Car actualcar3= manager.orderFetch(superSmartParkingBoy,ticket3);
+        Car actualCar1= manager.orderFetch(parkingBoy,ticket1);
+        Car actualCar2= manager.orderFetch(smartParkingBoy,ticket2);
+        Car actualCar3= manager.orderFetch(superSmartParkingBoy,ticket3);
 
         //then
-        assertEquals(car1,actualcar1);
-        assertEquals(car2,actualcar2);
-        assertEquals(car3,actualcar3);
+        assertEquals(car1,actualCar1);
+        assertEquals(car2,actualCar2);
+        assertEquals(car3,actualCar3);
+    }
+    @Test
+    public void should_not_able_to_order_any_kinds_of_parking_boys_fetch_car_when_order_fetch_given_the_parking_boys_not_in_the_list() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
+        //given
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        ParkingLot parkingLot3 = new ParkingLot(1);
+        ParkingLot parkingLot4 = new ParkingLot(1);
+        List<ParkingLot> parkingLots1 = new ArrayList<>();
+        List<ParkingLot> parkingLots2 = new ArrayList<>();
+        List<ParkingLot> parkingLots3 = new ArrayList<>();
+        List<ParkingLot> parkingLots4 = new ArrayList<>();
+        parkingLots1.add(parkingLot1);
+        parkingLots2.add(parkingLot2);
+        parkingLots3.add(parkingLot3);
+        parkingLots4.add(parkingLot4);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots1);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots2);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots3);
+        Manager manager = new Manager(parkingLots4);
+        Ticket ticket1 = parkingBoy.parkCar( car1);
+        Ticket ticket2 = smartParkingBoy.parkCar(car2);
+        Ticket ticket3 = superSmartParkingBoy.parkCar(car3);
+        //when
+        Car actualCar1= manager.orderFetch(parkingBoy,ticket1);
+        Car actualCar2= manager.orderFetch(smartParkingBoy,ticket2);
+        Car actualCar3= manager.orderFetch(superSmartParkingBoy,ticket3);
+
+        //then
+        assertNull(actualCar1);
+        assertNull(actualCar2);
+        assertNull(actualCar3);
 
     }
 }
