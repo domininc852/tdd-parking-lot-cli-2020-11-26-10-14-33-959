@@ -24,10 +24,10 @@ public class ManagerTest {
         parkingLots2.add(parkingLot2);
         parkingLots3.add(parkingLot3);
         parkingLots4.add(parkingLot4);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots1, new StandardPark());
-        ParkingBoy smartParkingBoy = new ParkingBoy(parkingLots2, new SmartPark());
-        ParkingBoy superSmartParkingBoy = new ParkingBoy(parkingLots3, new SuperSmartPark());
-        Manager manager = new Manager(parkingLots4, new StandardPark());
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots1);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots2);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots3);
+        Manager manager = new Manager(parkingLots4);
         //when
         boolean isAddParkingBoySuccessful = manager.addParkingBoyToList(parkingBoy);
         boolean isAddSmartParkingBoySuccessful = manager.addParkingBoyToList(smartParkingBoy);
@@ -47,8 +47,8 @@ public class ManagerTest {
         List<ParkingLot> parkingLots2 = new ArrayList<>();
         parkingLots1.add(parkingLot1);
         parkingLots2.add(parkingLot2);
-        Manager manager1 = new Manager(parkingLots1, new StandardPark());
-        Manager manager2 = new Manager(parkingLots2, new StandardPark());
+        Manager manager1 = new Manager(parkingLots1);
+        Manager manager2 = new Manager(parkingLots2);
         //when
         boolean isManagerSuccessful = manager1.addParkingBoyToList(manager2);
         //then
@@ -73,10 +73,10 @@ public class ManagerTest {
         parkingLots2.add(parkingLot2);
         parkingLots3.add(parkingLot3);
         parkingLots4.add(parkingLot4);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots1, new StandardPark());
-        ParkingBoy smartParkingBoy = new ParkingBoy(parkingLots2, new SmartPark());
-        ParkingBoy superSmartParkingBoy = new ParkingBoy(parkingLots3, new SuperSmartPark());
-        Manager manager = new Manager(parkingLots4, new StandardPark());
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots1);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots2);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots3);
+        Manager manager = new Manager(parkingLots4);
         manager.addParkingBoyToList(parkingBoy);
         manager.addParkingBoyToList(smartParkingBoy);
         manager.addParkingBoyToList(superSmartParkingBoy);
@@ -108,10 +108,10 @@ public class ManagerTest {
         parkingLots2.add(parkingLot2);
         parkingLots3.add(parkingLot3);
         parkingLots4.add(parkingLot4);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots1, new StandardPark());
-        ParkingBoy smartParkingBoy = new ParkingBoy(parkingLots2, new SmartPark());
-        ParkingBoy superSmartParkingBoy = new ParkingBoy(parkingLots3, new SuperSmartPark());
-        Manager manager = new Manager(parkingLots4, new StandardPark());
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots1);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots2);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots3);
+        Manager manager = new Manager(parkingLots4);
         //when
         Ticket ticket1 = manager.orderPark(parkingBoy, car1);
         Ticket ticket2 = manager.orderPark(smartParkingBoy, car2);
@@ -136,8 +136,8 @@ public class ManagerTest {
         parkingLots1.add(parkingLot1);
         parkingLots1.add(parkingLot2);
         parkingLots2.add(parkingLot3);
-        ParkingBoy smartParkingBoy = new ParkingBoy(parkingLots1, new SmartPark());
-        Manager manager = new Manager(parkingLots2, new StandardPark());
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots1);
+        Manager manager = new Manager(parkingLots2);
         manager.addParkingBoyToList(smartParkingBoy);
         //when
         Ticket ticket1 = manager.orderPark(smartParkingBoy, car1);
@@ -170,10 +170,10 @@ public class ManagerTest {
         parkingLots2.add(parkingLot2);
         parkingLots3.add(parkingLot3);
         parkingLots4.add(parkingLot4);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots1, new StandardPark());
-        ParkingBoy smartParkingBoy = new ParkingBoy(parkingLots2, new SmartPark());
-        ParkingBoy superSmartParkingBoy = new ParkingBoy(parkingLots3, new SuperSmartPark());
-        Manager manager = new Manager(parkingLots4, new StandardPark());
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots1);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots2);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots3);
+        Manager manager = new Manager(parkingLots4);
         manager.addParkingBoyToList(parkingBoy);
         manager.addParkingBoyToList(smartParkingBoy);
         manager.addParkingBoyToList(superSmartParkingBoy);
@@ -209,10 +209,10 @@ public class ManagerTest {
         parkingLots2.add(parkingLot2);
         parkingLots3.add(parkingLot3);
         parkingLots4.add(parkingLot4);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots1, new StandardPark());
-        ParkingBoy smartParkingBoy = new ParkingBoy(parkingLots2, new SmartPark());
-        ParkingBoy superSmartParkingBoy = new ParkingBoy(parkingLots3, new SuperSmartPark());
-        Manager manager = new Manager(parkingLots4, new StandardPark());
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots1);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots2);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots3);
+        Manager manager = new Manager(parkingLots4);
         Ticket ticket1 = parkingBoy.parkCar(car1);
         Ticket ticket2 = smartParkingBoy.parkCar(car2);
         Ticket ticket3 = superSmartParkingBoy.parkCar(car3);
@@ -240,8 +240,8 @@ public class ManagerTest {
         parkingLots1.add(parkingLot1);
         parkingLots1.add(parkingLot2);
         parkingLots2.add(parkingLot3);
-        ParkingBoy superSmartParkingBoy = new ParkingBoy(parkingLots1, new SuperSmartPark());
-        Manager manager = new Manager(parkingLots2, new StandardPark());
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots1);
+        Manager manager = new Manager(parkingLots2);
         manager.addParkingBoyToList(superSmartParkingBoy);
         Ticket ticket = superSmartParkingBoy.parkCar(car);
         //when
@@ -253,21 +253,23 @@ public class ManagerTest {
         assertEquals("Unrecognized parking ticket", unrecognizedParkingTicketException.getMessage());
 
     }
+
     @Test
     public void should_be_parked_once_when_park_a_car_given_a_manager() throws NotEnoughPositionException {
         //given
         Car car = new Car();
-        StandardPark standardPark= Mockito.mock(StandardPark.class);
-        ParkingLot parkingLot1=new ParkingLot(1);
-        ParkingLot parkingLot2=new ParkingLot(1);
+        StandardPark standardPark = Mockito.mock(StandardPark.class);
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
-        Manager manager=new Manager(parkingLots,standardPark);
+        Manager manager = new Manager(parkingLots);
+        manager.setParkBehavior(standardPark);
         //when
         manager.parkCar(car);
         //then
-        Mockito.verify(standardPark, Mockito.times(1)).park(car,parkingLots);
+        Mockito.verify(standardPark, Mockito.times(1)).park(car, parkingLots);
     }
 
 }

@@ -87,7 +87,7 @@ class StandardParkTest {
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
         StandardPark standardPark = new StandardPark();
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots, new StandardPark());
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         //when
         Ticket ticket1 = standardPark.park(car1, parkingLots);
         standardPark.park(car2, parkingLots);

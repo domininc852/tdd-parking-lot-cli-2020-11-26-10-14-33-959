@@ -5,11 +5,11 @@ import java.util.Optional;
 
 public class ParkingBoy {
     protected List<ParkingLot> parkingLots;
-    private IParkBehavior parkBehavior;
+    protected IParkBehavior parkBehavior;
 
-    public ParkingBoy(List<ParkingLot> parkingLots, IParkBehavior parkBehavior) {
+    public ParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
-        this.parkBehavior = parkBehavior;
+        this.parkBehavior = new StandardPark();
     }
 
     public Ticket parkCar(Car car) throws NotEnoughPositionException {

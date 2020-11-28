@@ -23,7 +23,7 @@ public class ParkingBoyTest {
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots, new StandardPark());
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         Ticket ticket = parkingBoy.parkCar(car);
         Car actual1 = parkingBoy.fetchCar(ticket);
         //when
@@ -50,7 +50,7 @@ public class ParkingBoyTest {
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots, new StandardPark());
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         parkingBoy.parkCar(car);
         Ticket ticket2 = new Ticket();
         //when
@@ -62,29 +62,4 @@ public class ParkingBoyTest {
         assertEquals("Unrecognized parking ticket", unrecognizedParkingTicketException.getMessage());
     }
 
-    @Test
-    public void should_park_according_to_current_park_behavior_when_change_park_behavior_and_park_given_a_parking_boy() throws NotEnoughPositionException {
-        //given
-        Car car1 = new Car();
-        Car car2 = new Car();
-        Car car3 = new Car();
-        ParkingLot parkingLot1 = new ParkingLot(2);
-        ParkingLot parkingLot2 = new ParkingLot(10);
-        ParkingLot parkingLot3 = new ParkingLot(6);
-        List<ParkingLot> parkingLots = new ArrayList<>();
-        parkingLots.add(parkingLot1);
-        parkingLots.add(parkingLot2);
-        parkingLots.add(parkingLot3);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots, new StandardPark());
-        //when
-        parkingBoy.parkCar(car1);
-        parkingBoy.setParkBehavior(new SmartPark());
-        parkingBoy.parkCar(car2);
-        parkingBoy.setParkBehavior(new SuperSmartPark());
-        parkingBoy.parkCar(car3);
-        //then
-        assertEquals(1, parkingLot1.getAvailableSpace());
-        assertEquals(9, parkingLot2.getAvailableSpace());
-        assertEquals(5, parkingLot3.getAvailableSpace());
-    }
 }
