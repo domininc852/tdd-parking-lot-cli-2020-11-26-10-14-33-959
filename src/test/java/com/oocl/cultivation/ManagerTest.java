@@ -150,6 +150,7 @@ public class ManagerTest {
         assertNotNull(ticket1);
         assertNotNull(ticket2);
     }
+
     @Test
     public void should_able_to_order_all_kinds_of_parking_boys_fetch_car_when_order_fetch_given_the_parking_boys_in_the_list() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
         //given
@@ -175,19 +176,20 @@ public class ManagerTest {
         manager.addParkingBoyToList(parkingBoy);
         manager.addParkingBoyToList(smartParkingBoy);
         manager.addParkingBoyToList(superSmartParkingBoy);
-        Ticket ticket1 = parkingBoy.parkCar( car1);
+        Ticket ticket1 = parkingBoy.parkCar(car1);
         Ticket ticket2 = smartParkingBoy.parkCar(car2);
         Ticket ticket3 = superSmartParkingBoy.parkCar(car3);
         //when
-        Car actualCar1= manager.orderFetch(parkingBoy,ticket1);
-        Car actualCar2= manager.orderFetch(smartParkingBoy,ticket2);
-        Car actualCar3= manager.orderFetch(superSmartParkingBoy,ticket3);
+        Car actualCar1 = manager.orderFetch(parkingBoy, ticket1);
+        Car actualCar2 = manager.orderFetch(smartParkingBoy, ticket2);
+        Car actualCar3 = manager.orderFetch(superSmartParkingBoy, ticket3);
 
         //then
-        assertEquals(car1,actualCar1);
-        assertEquals(car2,actualCar2);
-        assertEquals(car3,actualCar3);
+        assertEquals(car1, actualCar1);
+        assertEquals(car2, actualCar2);
+        assertEquals(car3, actualCar3);
     }
+
     @Test
     public void should_not_able_to_order_any_kinds_of_parking_boys_fetch_car_when_order_fetch_given_the_parking_boys_not_in_the_list() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
         //given
@@ -210,18 +212,42 @@ public class ManagerTest {
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots2);
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots3);
         Manager manager = new Manager(parkingLots4);
-        Ticket ticket1 = parkingBoy.parkCar( car1);
+        Ticket ticket1 = parkingBoy.parkCar(car1);
         Ticket ticket2 = smartParkingBoy.parkCar(car2);
         Ticket ticket3 = superSmartParkingBoy.parkCar(car3);
         //when
-        Car actualCar1= manager.orderFetch(parkingBoy,ticket1);
-        Car actualCar2= manager.orderFetch(smartParkingBoy,ticket2);
-        Car actualCar3= manager.orderFetch(superSmartParkingBoy,ticket3);
+        Car actualCar1 = manager.orderFetch(parkingBoy, ticket1);
+        Car actualCar2 = manager.orderFetch(smartParkingBoy, ticket2);
+        Car actualCar3 = manager.orderFetch(superSmartParkingBoy, ticket3);
 
         //then
         assertNull(actualCar1);
         assertNull(actualCar2);
         assertNull(actualCar3);
 
+    }
+    @Test
+    public void should_return_unrecognized_parking_position_error_message_when_order_fetch_given_the_ticket_is_invalid() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
+        //given
+        Car car = new Car();
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        ParkingLot parkingLot3 = new ParkingLot(1);
+        List<ParkingLot> parkingLots1 = new ArrayList<>();
+        List<ParkingLot> parkingLots2 = new ArrayList<>();
+        parkingLots1.add(parkingLot1);
+        parkingLots1.add(parkingLot2);
+        parkingLots2.add(parkingLot3);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots1);
+        Manager manager = new Manager(parkingLots2);
+        manager.addParkingBoyToList(superSmartParkingBoy);
+        Ticket ticket=superSmartParkingBoy.parkCar(car);
+        //when
+        manager.orderFetch(superSmartParkingBoy, ticket);
+        final UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(UnrecognizedParkingTicketException.class, () -> {
+            manager.orderFetch(superSmartParkingBoy, ticket);
+        });
+        //then
+        assertEquals("Unrecognized parking ticket", unrecognizedParkingTicketException.getMessage());
     }
 }
