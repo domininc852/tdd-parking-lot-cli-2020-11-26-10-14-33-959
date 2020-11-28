@@ -249,5 +249,6 @@ public class ManagerTest {
         });
         //then
         assertEquals("Unrecognized parking ticket", unrecognizedParkingTicketException.getMessage());
+
     }
 }
