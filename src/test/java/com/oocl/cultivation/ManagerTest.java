@@ -151,7 +151,7 @@ public class ManagerTest {
         assertNotNull(ticket2);
     }
     @Test
-    public void should_able_to_order_all_kinds_of_parking_boys_fetch_car_when_order_fetch_given_the_parking_boys_in_the_list() throws NotEnoughPositionException {
+    public void should_able_to_order_all_kinds_of_parking_boys_fetch_car_when_order_fetch_given_the_parking_boys_in_the_list() throws NotEnoughPositionException, UnrecognizedParkingTicketException {
         //given
         Car car1 = new Car();
         Car car2 = new Car();
