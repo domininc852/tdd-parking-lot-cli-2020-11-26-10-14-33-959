@@ -6,8 +6,8 @@ import java.util.List;
 public class Manager extends ParkingBoy {
     private List<ParkingBoy> managementList;
 
-    public Manager(List<ParkingLot> parkingLots) {
-        super(parkingLots);
+    public Manager(List<ParkingLot> parkingLots, IParkBehavior parkBehavior) {
+        super(parkingLots, parkBehavior);
         managementList = new ArrayList<>();
     }
 

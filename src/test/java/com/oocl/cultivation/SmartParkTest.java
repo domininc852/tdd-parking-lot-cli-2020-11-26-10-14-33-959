@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class SmartParkingBoyTest {
+public class SmartParkTest {
     @Test
     public void should_park_to_second_parking_lot_when_park_a_car_given_second_parking_lot_has_more_slots_than_the_first_parking_lot() throws NotEnoughPositionException {
         //given
@@ -18,9 +18,9 @@ public class SmartParkingBoyTest {
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
-        SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
+        SmartPark smartPark = new SmartPark();
         //when
-        parkingBoy.parkCar(car);
+        smartPark.park(car, parkingLots);
         //then
         assertEquals(3, parkingLot1.getAvailableSpace());
         assertEquals(3, parkingLot2.getAvailableSpace());
@@ -39,11 +39,11 @@ public class SmartParkingBoyTest {
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
         parkingLots.add(parkingLot3);
-        SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
+        SmartPark smartPark = new SmartPark();
         //when
-        parkingBoy.parkCar(car1);
-        parkingBoy.parkCar(car2);
-        parkingBoy.parkCar(car3);
+        smartPark.park(car1, parkingLots);
+        smartPark.park(car2, parkingLots);
+        smartPark.park(car3, parkingLots);
         //then
         assertEquals(2, parkingLot1.getAvailableSpace());
         assertEquals(2, parkingLot2.getAvailableSpace());
@@ -61,12 +61,12 @@ public class SmartParkingBoyTest {
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
-        SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
+        SmartPark smartPark = new SmartPark();
         //when
-        parkingBoy.parkCar(car1);
-        parkingBoy.parkCar(car2);
+        smartPark.park(car1, parkingLots);
+        smartPark.park(car2, parkingLots);
         final NotEnoughPositionException notEnoughPositionException = assertThrows(NotEnoughPositionException.class, () -> {
-            parkingBoy.parkCar(car3);
+            smartPark.park(car3, parkingLots);
         });
         assertEquals("Not enough position", notEnoughPositionException.getMessage());
     }
