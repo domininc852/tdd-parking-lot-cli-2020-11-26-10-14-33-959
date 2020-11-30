@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
-    private final int capacity;
+    private final int CAPACITY;
     private Map<Ticket, Car> ticketCarMap;
 
     public ParkingLot(int capacity) {
-        this.capacity = capacity;
+        this.CAPACITY = capacity;
         ticketCarMap = new HashMap<>();
     }
 
@@ -26,14 +26,14 @@ public class ParkingLot {
     }
 
     public int getAvailableSpace() {
-        return capacity - ticketCarMap.size();
+        return CAPACITY - ticketCarMap.size();
     }
 
     public boolean isCarExist(Ticket ticket) {
         return ticketCarMap.get(ticket)!=null;
     }
     public double getAvailablePositionRate(){
-        return (getAvailableSpace())*1.0/capacity;
+        return (getAvailableSpace())*1.0/ CAPACITY;
     }
 
 
